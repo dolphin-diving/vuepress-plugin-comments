@@ -1,13 +1,13 @@
-# @vuepress-reco/vuepress-plugin-valine
+# @vuepress-reco/vuepress-plugin-comments
 
 ## Introduce
 
-Valine plugin for vuepress-theme-reco or other vuepress theme.
+Comments plugin for vuepress-theme-reco or other vuepress theme.
 
 ### Name
 
-- **As plugin**: `@vuepress-reco/vuepress-plugin-valine`
-- **As component**: `Valine (评论)` / `AccessNumber (访问量)`（主题开发时使用）
+- **As plugin**: `@vuepress-reco/vuepress-plugin-comments`
+- **As component**: `Comments (评论)` / `AccessNumber (使用 Valine 时的访问量)`（主题开发时使用）
 
 ## Option API
 

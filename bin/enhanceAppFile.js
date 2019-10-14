@@ -1,7 +1,5 @@
-import Valine from './Valine.vue'
-import AccessNumber from './AccessNumber.vue'
+import Comments from './Comments.vue'
 
 export default ({ Vue }) => {
-  Vue.component('Valine', Valine)
-  Vue.component('AccessNumber', AccessNumber)
+  Vue.component('Comments', Comments)
 }

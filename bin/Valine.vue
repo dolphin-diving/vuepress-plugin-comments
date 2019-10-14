@@ -1,5 +1,5 @@
 <template>
-  <div class="valine-wrapper" v-show="isShowComment">
+  <div class="valine-wrapper">
     <div id="valine"></div>
   </div>
 </template>
@@ -8,38 +8,39 @@
 
 export default {
   props: {
-    isShowComment: {
-      type: Boolean,
-      default: true
+    options: {
+      type: Object,
+      default () {
+        return {}
+      }
     }
   },
   mounted: function () {
-    this.createValine()
+    this.initValine()
   },
   methods: {
-    createValine () {
-      const valineConfig = this.$themeConfig.valineConfig
-      if (valineConfig) {
-        const Valine = require('valine')
-        const AV = require('leancloud-storage')
-        if (typeof window !== 'undefined') {
-          this.window = window
-          window.AV = AV
-        }
-
-        new Valine({
-          el: '#valine',
-          appId: valineConfig.appId, // your appId
-          appKey: valineConfig.appKey, // your appKey
-          placeholder: valineConfig.placeholder || 'just go go',
-          notify: valineConfig.notify || false,
-          verify: valineConfig.verify || false,
-          avatar: valineConfig.avatar || 'retro',
-          visitor: valineConfig.visitor || true,
-          recordIP: valineConfig.recordIP || false,
-          path: window.location.pathname
-        })
+    initValine () {
+      const Valine = require('valine')
+      const AV = require('leancloud-storage')
+      const valineOptions = {
+        el: '#valine',
+        placeholder: 'just go go',
+        notify: false,
+        verify: false,
+        avatar: 'retro',
+        visitor: true,
+        recordIP: false,
+        path: window.location.pathname,
+        ...this.options
       }
+
+      if (typeof window !== 'undefined') {
+        this.window = window
+        window.AV = AV
+      }
+
+
+      new Valine(valineOptions)
     }
   },
   watch: {
