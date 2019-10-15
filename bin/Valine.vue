@@ -7,6 +7,7 @@
 <script>
 
 export default {
+  name: 'Valine',
   props: {
     options: {
       type: Object,

@@ -1,7 +1,7 @@
 <template>
-  <Vssue
+  <VssueComponent
     :title="title"
-    :options="options"
+    :options="vssueOptions"
   />
 </template>
 
@@ -11,23 +11,35 @@ import GithubV3 from '@vssue/api-github-v3'
 import 'vssue/dist/vssue.css'
 
 export default {
-  name: 'VssueDemo',
-
-  components: {
-    'Vssue': VssueComponent,
-  },
-
-  data () {
-    return {
-      title: 'Vssue Demo',
-      options: {
-        api: GithubV3,
-        owner: 'OWNER_OF_REPO',
-        repo: 'NAME_OF_REPO',
-        clientId: 'YOUR_CLIENT_ID',
-        clientSecret: 'YOUR_CLIENT_SECRET', // 只有在使用某些平台时需要
-      },
+  name: 'Vssue',
+  components: { VssueComponent },
+  props: {
+    options: {
+      type: Object,
+      default () {
+        return {}
+      }
     }
   },
+  data () {
+    return {
+      title: 'vuepress-theme-reco',
+      platformOptions: {
+        github: GithubV3
+      }
+    }
+  },
+  computed: {
+    vssueOptions () {
+      const { platformOptions, options, options: { title } } = this
+      const platform = platformOptions[options.platform]
+      if (title !== undefined) {
+        this.title = title
+        delete options.title
+      }
+      console.log(options)
+      return { ...options, api: platform }
+    }
+  }
 }
 </script>
