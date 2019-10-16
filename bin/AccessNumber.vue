@@ -1,13 +1,19 @@
 <template>
-  <span v-if="$themeConfig.valineConfig && $themeConfig.valineConfig.visitor != false" :id="getIdVal(idVal)" class="leancloud-visitors" data-flag-title="Your Article Title">
-    <i class="iconfont reco-eye" style="margin-right: .5rem"></i>
+  <span v-if="$themeConfig.valineConfig && $themeConfig.valineConfig.visitor != false" :id="getIdVal(idVal)" class="leancloud-visitors" :data-flag-title="flagTitle">
     <a class="leancloud-visitors-count" :style="numStyle"></a>
   </span>
 </template>
 
 <script>
 export default {
-  props: ['idVal', 'numStyle'],
+  props: {
+    idVal: String,
+    numStyle: Object,
+    flagTitle: {
+      type: String,
+      default: 'Your Article Title'
+    }
+  },
   methods: {
     getIdVal (path) {
       const base = this.$site.base
@@ -16,9 +22,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.leancloud-visitors
-  margin-right .5rem
-</style>
-

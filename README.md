@@ -112,3 +112,8 @@ module.exports = {
 - description: 浏览量的数字样式（用于调整不同位置的显示风格）
 - type: `Object`
 
+#### flagTitle
+
+- description: 文章标题
+- type: `String`
+

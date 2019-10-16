@@ -32,14 +32,16 @@ export default {
     solution () {
       const { solution: slt } = this.commentsOptions,
             { valineConfig, vssueConfig } = this.$themeConfig;
+      let solution = ''
       if (slt !== undefined) {
-        return slt
+        solution = slt
       } else if (valineConfig !== undefined) {
-        return 'valine'
+        solution = 'valine'
       } else if (vssueConfig !== undefined) {
-        return 'vssue'
+        solution = 'vssue'
       }
-      return ''
+      this.$themeConfig.commentsSolution = solution
+      return solution
     },
     options () {
       const { options: opt } = this.commentsOptions,

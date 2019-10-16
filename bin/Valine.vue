@@ -50,7 +50,7 @@ export default {
         // 切换页面时刷新评论
         // this.$router.go(0)
         setTimeout(() => {
-          this.createValine()
+          this.initValine()
         }, 300)
       }
     }
