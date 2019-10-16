@@ -15,15 +15,10 @@ Comments plugin for vuepress-theme-reco or other vuepress theme.
 
 ---
 
-需配置 `config.js`
-
 ```javscript
-// 更改 /docs/.vuepress/config.js
-
 module.exports = {
   theme: 'reco',
   themeConfig: {
-    // valine
     valineConfig: {
       appId: '...',// your appId
       appKey: '...', // your appKey
@@ -32,70 +27,87 @@ module.exports = {
 }
 ```
 
-### appId
+或者：
 
-- required: `yes`
-- description: 从 LeanCloud 的应用中得到的 appId
-- type: `String`
+```javscript
+module.exports = {
+  theme: 'reco',
+  plugins: [['@vuepress-reco/comments', {
+    solution: 'valine',
+    options: {
+      appId: '...',// your appId
+      appKey: '...', // your appKey
+    }
+  }]] 
+}
+```
 
-### appKey
-
-- required: `yes`
-- description: 从 LeanCloud 的应用中得到的APP Key
-- type: `String`
-
-### placeholder
-
-- required: `no`
-- description: 评论框占位提示符
-- type: `String`
-- default: `just go go`
-
-### notify
-
-- required: `no`
-- description: 评论回复邮件提醒，请参考[配置](https://github.com/xCss/Valine/wiki/Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E8%AE%BE%E7%BD%AE)
-- type: `Boolean`
-- default: `false`
-
-### verify
-
-- required: `no`
-- description: 验证码服务
-- type: `Boolean`
-- default: `false`
-
-### avatar
-
-- required: `no`
-- description: Gravatar 头像展示方式，更多信息请查看[头像配置](https://valine.js.org/avatar.html)
-- type: `String`
-- default: `retro`
-
-### visitor
-
-- required: `no`
-- description: 文章访问量统计
-- type: `Boolean`
-- default: `true`
-
-### recordIP
-
-- required: `no`
-- description: recordIP
-- type: `Boolean`
-- default: `false`
-
-### AccessNumber
+### Vssue
 
 ---
 
-### idVal
+```javscript
+module.exports = {
+  theme: 'reco',
+  themeConfig: {
+    vssueConfig: {
+      title: 'vuepress-theme-reco',
+      platform: 'github',
+      owner: 'OWNER_OF_REPO',
+      repo: 'NAME_OF_REPO',
+      clientId: 'YOUR_CLIENT_ID',
+      clientSecret: 'YOUR_CLIENT_SECRET',
+    }
+  }  
+}
+```
+
+或者：
+
+```javscript
+module.exports = {
+  theme: 'reco',
+  plugins: [['@vuepress-reco/comments', {
+    solution: 'vuess',
+    options: {
+      title: 'vuepress-theme-reco',
+      platform: 'github',
+      owner: 'OWNER_OF_REPO',
+      repo: 'NAME_OF_REPO',
+      clientId: 'YOUR_CLIENT_ID',
+      clientSecret: 'YOUR_CLIENT_SECRET',
+    }
+  }]] 
+}
+```
+
+**`options` 详解：**
+- title: 在这里设置当前页面的 `Issue` 标题
+- platform: 支持的代码托管平台
+- owner: 对应 `repository` 的拥有者帐号或者团队
+- repo: 用来存储评论的 repository
+- clientId: `OAuth App` 的 `client id`
+- clientSecret: `OAuth App` 的 `client secret`（只有在使用某些平台时需要）
+
+**`platform` 详解（点击查看[支持的代码托管平台](https://vssue.js.org/zh/guide/supported-platforms.html)）：**
+- github: `@vssue/api-github-v3`
+- github-v4: `@vssue/api-github-v4`
+- gitlab: `@vssue/api-gitlab-v4`
+- bitbucket: `@vssue/api-bitbucket-v2`
+- gitee: `@vssue/api-gitee-v5`
+- 
+
+### AccessNumber
+
+> 仅在 使用 `Valine` 时才有效。
+
+
+#### idVal
 
 - description: valine 记录浏览数的 id 值
 - type: `String`
 
-### numStyle
+#### numStyle
 
 - description: 浏览量的数字样式（用于调整不同位置的显示风格）
 - type: `Object`
