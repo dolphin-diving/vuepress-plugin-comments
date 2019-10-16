@@ -11,6 +11,8 @@ Comments plugin for vuepress-theme-reco or other vuepress theme.
 
 ## Option API
 
+组件会在 `$themeConfig` 注入一个参数 `commentsSolution`，如果使用 `Valine`，其值为 `valine`，如果使用 `Vssue`，其值为 `vssue`，可以使用这个参数来主题中做差异化处理，比如是否显示阅读数量。
+
 ### Valine
 
 ---
