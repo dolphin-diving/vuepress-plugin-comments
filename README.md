@@ -53,7 +53,6 @@ module.exports = {
   theme: 'reco',
   themeConfig: {
     vssueConfig: {
-      title: 'vuepress-theme-reco',
       platform: 'github',
       owner: 'OWNER_OF_REPO',
       repo: 'NAME_OF_REPO',
@@ -72,7 +71,6 @@ module.exports = {
   plugins: [['@vuepress-reco/comments', {
     solution: 'vuess',
     options: {
-      title: 'vuepress-theme-reco',
       platform: 'github',
       owner: 'OWNER_OF_REPO',
       repo: 'NAME_OF_REPO',
@@ -84,7 +82,6 @@ module.exports = {
 ```
 
 **`options` 详解：**
-- title: 在这里设置当前页面的 `Issue` 标题
 - platform: 支持的代码托管平台
 - owner: 对应 `repository` 的拥有者帐号或者团队
 - repo: 用来存储评论的 repository

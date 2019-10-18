@@ -1,6 +1,6 @@
 <template>
   <VssueComponent
-    :title="title"
+    :key=""
     :options="vssueOptions"
   />
 </template>
@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-      title: 'vuepress-theme-reco',
+      key: 'key',
       platformOptions: {
         'github': GithubV3,
         'github-v4': GithubV4,
@@ -39,14 +39,19 @@ export default {
   },
   computed: {
     vssueOptions () {
-      const { platformOptions, options, options: { title } } = this
+      const { platformOptions, options } = this
       const platform = platformOptions[options.platform]
-      if (title !== undefined) {
-        this.title = title
-        delete options.title
-      }
-      delete options.platform
       return { ...options, api: platform }
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (to.path !== from.path) {
+        // 切换页面时刷新评论
+        setTimeout(() => {
+          this.key = `reco-${new Date().getTime()}`
+        }, 300)
+      }
     }
   }
 }
