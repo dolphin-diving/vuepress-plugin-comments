@@ -1,6 +1,6 @@
 <template>
   <VssueComponent
-    :key=""
+    :key="key"
     :options="vssueOptions"
   />
 </template>
