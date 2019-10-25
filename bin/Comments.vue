@@ -1,7 +1,7 @@
 <template>
   <div class="comments-wrapper">
     <component
-    v-show="isShow"
+    v-show="isShowComments"
     :is="componentName"
     :options="options" />
   </div>
@@ -24,11 +24,6 @@ export default {
     }
   },
   computed: {
-    // 是否显示评论
-    isShow () {
-      const frontmatter = this.$frontmatter
-      return !(this.isShowComments == false || frontmatter.isShowComments == false || frontmatter.home == true)
-    },
     solution () {
       const { solution: slt } = this.commentsOptions,
             { valineConfig, vssueConfig } = this.$themeConfig;
