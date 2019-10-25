@@ -25,8 +25,11 @@ export default {
   },
   computed: {
     solution () {
-      const { solution: slt } = this.commentsOptions,
-            { valineConfig, vssueConfig } = this.$themeConfig;
+      const {
+        commentsOptions: { solution: slt },
+        $themeConfig: { valineConfig, vssueConfig }
+      } = this
+
       let solution = ''
       if (slt !== undefined) {
         solution = slt
@@ -39,8 +42,10 @@ export default {
       return solution
     },
     options () {
-      const { options: opt } = this.commentsOptions,
-            { valineConfig, vssueConfig } = this.$themeConfig;
+      const {
+        commentsOptions: { options: opt },
+        $themeConfig: { valineConfig, vssueConfig }
+      } = this
 
       if (opt !== undefined) {
         return opt
