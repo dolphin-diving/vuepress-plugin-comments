@@ -1,9 +1,10 @@
 <template>
-  <component
-    class="comments-wrapper"
-    v-show="isShowComments"
-    :is="componentName"
-    :options="options" />
+  <div class="comments-wrapper">
+    <component
+      v-show="isShowComments"
+      :is="componentName"
+      :options="options" />
+  </div>
 </template>
 
 <script>
