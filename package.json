@@ -1,6 +1,6 @@
 {
   "name": "@vuepress-reco/vuepress-plugin-comments",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Comments plugin for vuepress-theme-reco or other vuepress theme",
   "main": "index.js",
   "scripts": {
